@@ -44,6 +44,20 @@ color ron     " 设置背景主题
 autocmd InsertEnter * se cul    " 用浅色高亮当前行  
 set ruler           " 显示标尺  
 set showcmd         " 输入的命令显示出来，看的清楚些  
+" 设置标记一列的背景颜色和数字一行颜色一致
+ hi! link SignColumn   LineNr
+ hi! link ShowMarksHLl DiffAdd
+ hi! link ShowMarksHLu DiffChange
+      
+"" for error highlight，防止错误整行标红导致看不清
+ highlight clear SpellBad
+ highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+ highlight clear SpellCap
+ highlight SpellCap term=underline cterm=underline
+ highlight clear SpellRare
+ highlight SpellRare term=underline cterm=underline
+ highlight clear SpellLocal
+ highlight SpellLocal term=underline cterm=underline
 "set whichwrap+=<,>,h,l   " 允许backspace和光标键跨越行边界(不建议)  
 set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离  
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
@@ -449,6 +463,8 @@ Bundle 'The-NERD-Commenter'
 "django
 Bundle 'django_templates.vim'
 Bundle 'Django-Projects'
+" 状态栏增强展示
+Bundle 'bling/vim-airline'  
 
 "Bundle 'FredKSchott/CoVim'
 "Bundle 'djangojump'
